@@ -126,14 +126,7 @@ def test_mission_inserts_company_literally() -> None:
 
 def test_email_structure() -> None:
     """Emails have a subject, greeting, body, and closing."""
-    message = email(
-        kind="followup",
-        recipient="The Team",
-        sender="Jordan Hale",
-        paragraphs=3,
-        seed=6,
-        level=2,
-    )[0]
+    message = email(kind="followup", recipient="The Team", sender="Jordan Hale", paragraphs=3, seed=6, level=2)[0]
     assert message["subject"]
     assert message["greeting"] == "Dear The Team,"
     body = message["paragraphs"]
@@ -196,9 +189,7 @@ def test_document_sections() -> None:
     assert "Strategic Objectives" in headings
     assert "Key Performance Indicators (Fictional)" in headings
     assert "Conclusion" in headings
-    kpi = next(
-        section for section in sections if isinstance(section, dict) and section["fictional"]
-    )
+    kpi = next(section for section in sections if isinstance(section, dict) and section["fictional"])
     assert kpi["content"]
 
 
@@ -270,29 +261,20 @@ def test_cli_json_markdown_and_files(tmp_path: Path, capsys: pytest.CaptureFixtu
     assert main(["generate", "--output", str(missing)]) == 3
 
 
-def test_config_defaults_and_cli_override(
-    tmp_path: Path, capsys: pytest.CaptureFixture[str]
-) -> None:
+def test_config_defaults_and_cli_override(tmp_path: Path, capsys: pytest.CaptureFixture[str]) -> None:
     """Configuration supplies defaults and the command line replaces them."""
     path = tmp_path / "corporate-bullshit.toml"
-    path.write_text(
-        'level = 1\nformat = "json"\ncount = 2\ncompany = "Config Co"\n', encoding="utf-8"
-    )
+    path.write_text('level = 1\nformat = "json"\ncount = 2\ncompany = "Config Co"\n', encoding="utf-8")
     assert main(["generate", "--config", str(path), "--seed", "9"]) == 0
     payload = json.loads(capsys.readouterr().out)
     assert payload["level"] == 1
     assert payload["count"] == 2
-    assert (
-        main(["generate", "--config", str(path), "--level", "3", "--seed", "9", "--format", "json"])
-        == 0
-    )
+    assert main(["generate", "--config", str(path), "--level", "3", "--seed", "9", "--format", "json"]) == 0
     overridden = json.loads(capsys.readouterr().out)
     assert overridden["level"] == 3
 
 
-def test_invalid_arguments_and_translate_stdin(
-    capsys: pytest.CaptureFixture[str], monkeypatch: pytest.MonkeyPatch
-) -> None:
+def test_invalid_arguments_and_translate_stdin(capsys: pytest.CaptureFixture[str], monkeypatch: pytest.MonkeyPatch) -> None:
     """Bad arguments exit 2. Translate accepts stdin."""
     with pytest.raises(SystemExit) as caught:
         main(["generate", "--level", "9"])
@@ -313,10 +295,7 @@ def test_document_markdown_and_help() -> None:
     from lupaxa.corporate_bullshit.formatting import render_result
 
     doc = document(kind="report", seed=2, paragraphs=4)[0]
-    rendered = render_result(
-        {"mode": "document", "results": [doc]},
-        "markdown",
-    )
+    rendered = render_result({"mode": "document", "results": [doc]}, "markdown")
     assert rendered.startswith("# ")
     assert "## Executive Summary" in rendered
     with pytest.raises(SystemExit) as caught:

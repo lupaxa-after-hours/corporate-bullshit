@@ -86,14 +86,7 @@ class Catalogue:
             raise VocabularyError(f"no templates for {group} at level {level}")
         return rng.choices(pool, weights=weights, k=1)[0]
 
-    def pick(
-        self,
-        category: str,
-        level: int,
-        rng: Random,
-        avoid: set[str],
-        preferred: list[str] | None = None,
-    ) -> str:
+    def pick(self, category: str, level: int, rng: Random, avoid: set[str], preferred: list[str] | None = None) -> str:
         """Pick a word, preferring this intensity and avoiding repeats."""
         levels = self.words.get(category)
         if not levels:
@@ -105,11 +98,7 @@ class Catalogue:
             raise VocabularyError(f"no vocabulary for {category} at level {level}")
         if preferred:
             wanted = {item.casefold() for item in preferred}
-            narrowed = [
-                (word, weight)
-                for word, weight in zip(pool, weights, strict=True)
-                if word.casefold() in wanted
-            ]
+            narrowed = [(word, weight) for word, weight in zip(pool, weights, strict=True) if word.casefold() in wanted]
             if narrowed and rng.random() < 0.7:
                 pool = [word for word, _weight in narrowed]
                 weights = [1] * len(pool)
@@ -130,14 +119,8 @@ def load_builtin() -> Catalogue:
     """Return the packaged catalogue. Built-in templates must be valid."""
     catalogue = Catalogue(
         version=VOCABULARY_VERSION,
-        words={
-            name: {level: list(items) for level, items in levels.items()}
-            for name, levels in WORDS.items()
-        },
-        patterns={
-            name: {level: list(items) for level, items in levels.items()}
-            for name, levels in PATTERNS.items()
-        },
+        words={name: {level: list(items) for level, items in levels.items()} for name, levels in WORDS.items()},
+        patterns={name: {level: list(items) for level, items in levels.items()} for name, levels in PATTERNS.items()},
         jargon=[JargonEntry(term, definition) for term, definition in JARGON],
         bingo=list(BINGO_TERMS),
     )
@@ -185,13 +168,7 @@ def _merge_file(catalogue: Catalogue, path: Path) -> None:
         _merge_bingo(catalogue, path, parsed["bingo"])
 
 
-def _merge_levels(
-    catalogue: Catalogue,
-    path: Path,
-    kind: str,
-    table: object,
-    target: dict[str, dict[int, list[str]]],
-) -> None:
+def _merge_levels(catalogue: Catalogue, path: Path, kind: str, table: object, target: dict[str, dict[int, list[str]]]) -> None:
     if not isinstance(table, dict):
         catalogue.warnings.append(f"{path}: ignored {kind} because it is not a table")
         return
@@ -200,9 +177,7 @@ def _merge_levels(
             catalogue.warnings.append(f"{path}: ignored a non-text {kind} name")
             continue
         bucket = target.setdefault(name, {1: [], 2: [], 3: []})
-        entries = _read_level_map(
-            path, kind, name, value, catalogue, allow_braces=kind == "patterns"
-        )
+        entries = _read_level_map(path, kind, name, value, catalogue, allow_braces=kind == "patterns")
         if kind == "patterns":
             entries = _keep_valid_patterns(catalogue, path, name, entries)
         for level, items in entries.items():
@@ -213,60 +188,31 @@ def _merge_levels(
                 bucket[level].append(item)
 
 
-def _read_level_map(
-    path: Path,
-    kind: str,
-    name: str,
-    value: object,
-    catalogue: Catalogue,
-    *,
-    allow_braces: bool,
-) -> dict[int, list[str]]:
+def _read_level_map(path: Path, kind: str, name: str, value: object, catalogue: Catalogue, *, allow_braces: bool) -> dict[int, list[str]]:
     found: dict[int, list[str]] = {1: [], 2: [], 3: []}
     if isinstance(value, list):
         found[2] = _strings(path, f"{kind}.{name}", value, catalogue, allow_braces=allow_braces)
         return found
     if not isinstance(value, dict):
-        catalogue.warnings.append(
-            f"{path}: ignored {kind}.{name} because it is not a table or list"
-        )
+        catalogue.warnings.append(f"{path}: ignored {kind}.{name} because it is not a table or list")
         return found
     for key, items in value.items():
         try:
             level = int(key)
         except (TypeError, ValueError):
-            catalogue.warnings.append(
-                f"{path}: ignored {kind}.{name}.{key} (level must be 1, 2, or 3)"
-            )
+            catalogue.warnings.append(f"{path}: ignored {kind}.{name}.{key} (level must be 1, 2, or 3)")
             continue
         if level not in (1, 2, 3):
-            catalogue.warnings.append(
-                f"{path}: ignored {kind}.{name}.{key} (level must be 1, 2, or 3)"
-            )
+            catalogue.warnings.append(f"{path}: ignored {kind}.{name}.{key} (level must be 1, 2, or 3)")
             continue
         if not isinstance(items, list):
-            catalogue.warnings.append(
-                f"{path}: ignored {kind}.{name}.{key} because it is not a list"
-            )
+            catalogue.warnings.append(f"{path}: ignored {kind}.{name}.{key} because it is not a list")
             continue
-        found[level] = _strings(
-            path,
-            f"{kind}.{name}.{level}",
-            items,
-            catalogue,
-            allow_braces=allow_braces,
-        )
+        found[level] = _strings(path, f"{kind}.{name}.{level}", items, catalogue, allow_braces=allow_braces)
     return found
 
 
-def _strings(
-    path: Path,
-    label: str,
-    items: list[object],
-    catalogue: Catalogue,
-    *,
-    allow_braces: bool = False,
-) -> list[str]:
+def _strings(path: Path, label: str, items: list[object], catalogue: Catalogue, *, allow_braces: bool = False) -> list[str]:
     kept: list[str] = []
     for item in items:
         if not isinstance(item, str) or not item.strip():
@@ -274,20 +220,13 @@ def _strings(
             continue
         text = " ".join(item.split())
         if not allow_braces and ("{" in text or "}" in text):
-            catalogue.warnings.append(
-                f"{path}: ignored '{text}' in {label} because it contains braces"
-            )
+            catalogue.warnings.append(f"{path}: ignored '{text}' in {label} because it contains braces")
             continue
         kept.append(text)
     return kept
 
 
-def _keep_valid_patterns(
-    catalogue: Catalogue,
-    path: Path,
-    group: str,
-    entries: dict[int, list[str]],
-) -> dict[int, list[str]]:
+def _keep_valid_patterns(catalogue: Catalogue, path: Path, group: str, entries: dict[int, list[str]]) -> dict[int, list[str]]:
     kept: dict[int, list[str]] = {1: [], 2: [], 3: []}
     for level, patterns in entries.items():
         for pattern in patterns:
@@ -338,11 +277,7 @@ def _merge_bingo(catalogue: Catalogue, path: Path, value: object) -> None:
         known.add(item.casefold())
 
 
-def pattern_problem(
-    pattern: str,
-    words: dict[str, dict[int, list[str]]],
-    patterns: dict[str, dict[int, list[str]]],
-) -> str | None:
+def pattern_problem(pattern: str, words: dict[str, dict[int, list[str]]], patterns: dict[str, dict[int, list[str]]]) -> str | None:
     """Return an error string, or ``None`` when the template is safe to fill."""
     if pattern.count("[") != pattern.count("]"):
         return "unbalanced brackets"
@@ -370,11 +305,7 @@ def _validate_patterns(catalogue: Catalogue) -> list[str]:
     return problems
 
 
-def _pool(
-    levels: dict[int, list[str]],
-    level: int,
-    avoid: set[str],
-) -> tuple[list[str], list[int]]:
+def _pool(levels: dict[int, list[str]], level: int, avoid: set[str]) -> tuple[list[str], list[int]]:
     pool: list[str] = []
     weights: list[int] = []
     for word_level, words in levels.items():

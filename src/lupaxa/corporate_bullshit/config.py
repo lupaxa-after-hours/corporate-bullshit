@@ -72,13 +72,7 @@ def load_settings(explicit: str | None) -> Settings:
     if "count" in parsed:
         settings.count = _bounded(parsed["count"], "count", MIN_COUNT, MAX_COUNT, path)
     if "paragraphs" in parsed:
-        settings.paragraphs = _bounded(
-            parsed["paragraphs"],
-            "paragraphs",
-            MIN_PARAGRAPHS,
-            MAX_PARAGRAPHS,
-            path,
-        )
+        settings.paragraphs = _bounded(parsed["paragraphs"], "paragraphs", MIN_PARAGRAPHS, MAX_PARAGRAPHS, path)
     if "colour" in parsed or "color" in parsed:
         raw = parsed["colour"] if "colour" in parsed else parsed["color"]
         if not isinstance(raw, bool):

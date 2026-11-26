@@ -19,18 +19,9 @@ PATTERNS: dict[str, dict[int, tuple[str, ...]]] = {
             "Our {adjective} {noun} will {verb} {outcome} [ {expression}].",
         ),
         3: (
-            (
-                "We must {verb} our {phrase} [ {expression}] to {verb} {outcome} "
-                "[ in service of {cliche}]."
-            ),
-            (
-                "It is imperative that we {verb} the {adjective} {noun} so {stakeholder} "
-                "can {verb} {outcome} [ while we {verb} {management}]."
-            ),
-            (
-                "Going forward, we will {verb} our {phrase} [ through {technical}] "
-                "in order to {verb} {outcome}."
-            ),
+            ("We must {verb} our {phrase} [ {expression}] to {verb} {outcome} [ in service of {cliche}]."),
+            ("It is imperative that we {verb} the {adjective} {noun} so {stakeholder} can {verb} {outcome} [ while we {verb} {management}]."),
+            ("Going forward, we will {verb} our {phrase} [ through {technical}] in order to {verb} {outcome}."),
         ),
     },
     "phrase": {
@@ -44,24 +35,12 @@ PATTERNS: dict[str, dict[int, tuple[str, ...]]] = {
             "Yes, that sounds right. Let's {verb} the {noun} and move on.",
         ),
         2: (
-            (
-                "I think we're broadly aligned on the {noun}, but we should circle back "
-                "with {stakeholder} before committing to the next phase."
-            ),
-            (
-                "I'm supportive. We should {verb} the {adjective} {noun} and keep {stakeholder} "
-                "in the loop."
-            ),
+            ("I think we're broadly aligned on the {noun}, but we should circle back with {stakeholder} before committing to the next phase."),
+            ("I'm supportive. We should {verb} the {adjective} {noun} and keep {stakeholder} in the loop."),
         ),
         3: (
-            (
-                "I am fully aligned, directionally, with the {phrase}, and I propose we "
-                "{verb} {outcome} [ {expression}] before we {meeting}."
-            ),
-            (
-                "Broadly, yes. Let us {verb} our {adjective} {noun} and socialise {outcome} "
-                "with {stakeholder} [ in honour of {cliche}]."
-            ),
+            ("I am fully aligned, directionally, with the {phrase}, and I propose we {verb} {outcome} [ {expression}] before we {meeting}."),
+            ("Broadly, yes. Let us {verb} our {adjective} {noun} and socialise {outcome} with {stakeholder} [ in honour of {cliche}]."),
         ),
     },
     "meeting_avoidance": {
@@ -74,14 +53,8 @@ PATTERNS: dict[str, dict[int, tuple[str, ...]]] = {
             "Let's {meeting} and {verb} the {noun} with {stakeholder} before we answer.",
         ),
         3: (
-            (
-                "I want to honour the question by a plan to {verb} it through the {phrase} "
-                "[ {expression}] rather than answering it in the room."
-            ),
-            (
-                "The responsible path is to {verb} the {adjective} {noun} with {stakeholder} "
-                "before we commit a position on {outcome}."
-            ),
+            ("I want to honour the question by a plan to {verb} it through the {phrase} [ {expression}] rather than answering it in the room."),
+            ("The responsible path is to {verb} the {adjective} {noun} with {stakeholder} before we commit a position on {outcome}."),
         ),
     },
     "meeting_deflection": {
@@ -94,14 +67,8 @@ PATTERNS: dict[str, dict[int, tuple[str, ...]]] = {
             "I'll ask {stakeholder} to {verb} the {noun} so we stay in our lane.",
         ),
         3: (
-            (
-                "Ownership of the {phrase} clearly resides with {stakeholder}, who can "
-                "{verb} {outcome} [ {expression}]."
-            ),
-            (
-                "In the interest of {noun}, {stakeholder} should {verb} this while we "
-                "{verb} the wider {management}."
-            ),
+            ("Ownership of the {phrase} clearly resides with {stakeholder}, who can {verb} {outcome} [ {expression}]."),
+            ("In the interest of {noun}, {stakeholder} should {verb} this while we {verb} the wider {management}."),
         ),
     },
     "meeting_followup": {
@@ -114,14 +81,8 @@ PATTERNS: dict[str, dict[int, tuple[str, ...]]] = {
             "I'll book a working session so we can {verb} {outcome} with {stakeholder}.",
         ),
         3: (
-            (
-                "I propose a follow-up forum to {verb} the {phrase} and {verb} {outcome} "
-                "[ before we {meeting}]."
-            ),
-            (
-                "We should spin up a focused session [ {expression}] so {stakeholder} can "
-                "{verb} the {adjective} {noun}."
-            ),
+            ("I propose a follow-up forum to {verb} the {phrase} and {verb} {outcome} [ before we {meeting}]."),
+            ("We should spin up a focused session [ {expression}] so {stakeholder} can {verb} the {adjective} {noun}."),
         ),
     },
     "meeting_strategy": {
@@ -134,14 +95,8 @@ PATTERNS: dict[str, dict[int, tuple[str, ...]]] = {
             "Strategically, we should {verb} the {noun} so {stakeholder} see {outcome}.",
         ),
         3: (
-            (
-                "Strategically, we must {verb} the {phrase} [ {expression}] so that "
-                "{stakeholder} experience {outcome}."
-            ),
-            (
-                "The play is to {verb} our {adjective} {noun} through {management} and "
-                "{verb} {outcome} [ in keeping with {cliche}]."
-            ),
+            ("Strategically, we must {verb} the {phrase} [ {expression}] so that {stakeholder} experience {outcome}."),
+            ("The play is to {verb} our {adjective} {noun} through {management} and {verb} {outcome} [ in keeping with {cliche}]."),
         ),
     },
     "meeting_objection": {
@@ -150,21 +105,12 @@ PATTERNS: dict[str, dict[int, tuple[str, ...]]] = {
             "I have a concern. Can we {verb} the {noun} before we agree?",
         ),
         2: (
-            (
-                "I'm not sure we're ready to {verb} that until the {noun} has been "
-                "discussed with {stakeholder}."
-            ),
+            ("I'm not sure we're ready to {verb} that until the {noun} has been discussed with {stakeholder}."),
             "I'd challenge the pace. We should {verb} the {adjective} {noun} first.",
         ),
         3: (
-            (
-                "I have a directional concern: we should not {verb} the {phrase} until "
-                "{stakeholder} can {verb} {outcome}."
-            ),
-            (
-                "I'm hesitant. The {adjective} {noun} is not yet socialised "
-                "[ {expression}], so {outcome} would be premature."
-            ),
+            ("I have a directional concern: we should not {verb} the {phrase} until {stakeholder} can {verb} {outcome}."),
+            ("I'm hesitant. The {adjective} {noun} is not yet socialised [ {expression}], so {outcome} would be premature."),
         ),
     },
     "meeting_summary": {
@@ -173,21 +119,12 @@ PATTERNS: dict[str, dict[int, tuple[str, ...]]] = {
             "To summarise, {stakeholder} will {verb} the {noun}.",
         ),
         2: (
-            (
-                "So, to summarise, we are going to {verb} the {adjective} {noun} and "
-                "revisit {outcome} later."
-            ),
+            ("So, to summarise, we are going to {verb} the {adjective} {noun} and revisit {outcome} later."),
             "The short version is that {stakeholder} will {verb} the {noun} [ {expression}].",
         ),
         3: (
-            (
-                "Summarising the summary, we will {verb} our {phrase} [ {expression}] "
-                "and {verb} {outcome} with {stakeholder}."
-            ),
-            (
-                "Net-net, we will {verb} the {adjective} {noun} so we can {verb} "
-                "{outcome} [ in the spirit of {cliche}]."
-            ),
+            ("Summarising the summary, we will {verb} our {phrase} [ {expression}] and {verb} {outcome} with {stakeholder}."),
+            ("Net-net, we will {verb} the {adjective} {noun} so we can {verb} {outcome} [ in the spirit of {cliche}]."),
         ),
     },
     "excuse_deadline": {
@@ -196,21 +133,12 @@ PATTERNS: dict[str, dict[int, tuple[str, ...]]] = {
             "We need a little more time to {verb} the {noun} properly.",
         ),
         2: (
-            (
-                "Due to evolving {adjective} dependencies, we've had to {verb} our "
-                "delivery expectations to stay aligned with the {noun}."
-            ),
+            ("Due to evolving {adjective} dependencies, we've had to {verb} our delivery expectations to stay aligned with the {noun}."),
             "An upstream change means we must {verb} the {project} before the date can hold.",
         ),
         3: (
-            (
-                "Due to evolving {adjective} dependencies [ {expression}], we've had to "
-                "{verb} our delivery expectations to maintain alignment with {outcome}."
-            ),
-            (
-                "The {project} encountered {excuse}, so the committed date has been "
-                "moved in favour of {outcome}."
-            ),
+            ("Due to evolving {adjective} dependencies [ {expression}], we've had to {verb} our delivery expectations to maintain alignment with {outcome}."),
+            ("The {project} encountered {excuse}, so the committed date has been moved in favour of {outcome}."),
         ),
     },
     "excuse_budget": {
@@ -219,21 +147,12 @@ PATTERNS: dict[str, dict[int, tuple[str, ...]]] = {
             "We need to {verb} the numbers before we can {verb} the {noun}.",
         ),
         2: (
-            (
-                "The {financial} is now tied to a {adjective} review, so we need to "
-                "{verb} spend before we proceed with the {noun}."
-            ),
+            ("The {financial} is now tied to a {adjective} review, so we need to {verb} spend before we proceed with the {noun}."),
             "A funding check means we should {verb} the {noun} rather than start it.",
         ),
         3: (
-            (
-                "The {financial} now has to {verb} {outcome}, which requires us "
-                "to {verb} the {phrase} [ {expression}]."
-            ),
-            (
-                "Pending a {adjective} investment review, the {noun} is paused so we "
-                "can {verb} {outcome} for {stakeholder}."
-            ),
+            ("The {financial} now has to {verb} {outcome}, which requires us to {verb} the {phrase} [ {expression}]."),
+            ("Pending a {adjective} investment review, the {noun} is paused so we can {verb} {outcome} for {stakeholder}."),
         ),
     },
     "excuse_technical": {
@@ -242,21 +161,12 @@ PATTERNS: dict[str, dict[int, tuple[str, ...]]] = {
             "The {technical} needs a fix, so the {noun} is waiting.",
         ),
         2: (
-            (
-                "A constraint in the {technical} means we have to {verb} the "
-                "{adjective} {noun} before delivery can continue."
-            ),
+            ("A constraint in the {technical} means we have to {verb} the {adjective} {noun} before delivery can continue."),
             "The {technical} surfaced {excuse}, so the team is working to {verb} it.",
         ),
         3: (
-            (
-                "The {technical} introduced {excuse}, requiring us to {verb} the "
-                "{phrase} [ before we can {verb} {outcome}]."
-            ),
-            (
-                "Until we {verb} the {technical} [ {expression}], the {adjective} "
-                "{noun} remains in a holding pattern."
-            ),
+            ("The {technical} introduced {excuse}, requiring us to {verb} the {phrase} [ before we can {verb} {outcome}]."),
+            ("Until we {verb} the {technical} [ {expression}], the {adjective} {noun} remains in a holding pattern."),
         ),
     },
     "excuse_meeting": {
@@ -265,21 +175,12 @@ PATTERNS: dict[str, dict[int, tuple[str, ...]]] = {
             "We ran out of time to {verb} the {noun} and will pick it up next time.",
         ),
         2: (
-            (
-                "The forum was rescheduled, which delayed our chance to {verb} the "
-                "{adjective} {noun} with {stakeholder}."
-            ),
+            ("The forum was rescheduled, which delayed our chance to {verb} the {adjective} {noun} with {stakeholder}."),
             "Without the right people in the room we could not {verb} {outcome}.",
         ),
         3: (
-            (
-                "The alignment forum was resequenced, so {stakeholder} have not yet "
-                "been able to {verb} the {phrase}."
-            ),
-            (
-                "A cadence clash [ {expression}] prevented us from a plan to {verb} the "
-                "{adjective} {noun} in the agreed window."
-            ),
+            ("The alignment forum was resequenced, so {stakeholder} have not yet been able to {verb} the {phrase}."),
+            ("A cadence clash [ {expression}] prevented us from a plan to {verb} the {adjective} {noun} in the agreed window."),
         ),
     },
     "excuse_report": {
@@ -288,21 +189,12 @@ PATTERNS: dict[str, dict[int, tuple[str, ...]]] = {
             "I need to {verb} one figure in the {noun} before it goes out.",
         ),
         2: (
-            (
-                "The {noun} is with {stakeholder} for a {adjective} review, so the "
-                "issue date has moved."
-            ),
+            ("The {noun} is with {stakeholder} for a {adjective} review, so the issue date has moved."),
             "We are still trying to {verb} the commentary so the {noun} tells one story.",
         ),
         3: (
-            (
-                "The {noun} is undergoing a {adjective} narrative review so we can "
-                "{verb} {outcome} [ {expression}]."
-            ),
-            (
-                "Issuing the {noun} now would get ahead of {stakeholder}, who still "
-                "need to {verb} the {phrase}."
-            ),
+            ("The {noun} is undergoing a {adjective} narrative review so we can {verb} {outcome} [ {expression}]."),
+            ("Issuing the {noun} now would get ahead of {stakeholder}, who still need to {verb} the {phrase}."),
         ),
     },
     "excuse_project": {
@@ -316,10 +208,7 @@ PATTERNS: dict[str, dict[int, tuple[str, ...]]] = {
         ),
         3: (
             "The {project} is absorbing {excuse}, which has forced us to {verb} the {phrase}.",
-            (
-                "Cross-workstream {excuse} [ {expression}] means the {noun} cannot "
-                "yet {verb} {outcome}."
-            ),
+            ("Cross-workstream {excuse} [ {expression}] means the {noun} cannot yet {verb} {outcome}."),
         ),
     },
     "excuse_performance": {
@@ -328,24 +217,12 @@ PATTERNS: dict[str, dict[int, tuple[str, ...]]] = {
             "We did not hit the figure. The next step is to {verb} the {noun}.",
         ),
         2: (
-            (
-                "Performance against the {noun} is below the plan, so we are going to "
-                "{verb} the approach with {stakeholder}."
-            ),
-            (
-                "The numbers need context. We should {verb} the {adjective} {noun} "
-                "before drawing a conclusion."
-            ),
+            ("Performance against the {noun} is below the plan, so we are going to {verb} the approach with {stakeholder}."),
+            ("The numbers need context. We should {verb} the {adjective} {noun} before drawing a conclusion."),
         ),
         3: (
-            (
-                "The {kpi} is tracking shy of the aspirational range, so we will "
-                "{verb} the {phrase} [ {expression}]."
-            ),
-            (
-                "Rather than treat the variance as final, we will {verb} {outcome} "
-                "through a {adjective} recovery narrative."
-            ),
+            ("The {kpi} is tracking shy of the aspirational range, so we will {verb} the {phrase} [ {expression}]."),
+            ("Rather than treat the variance as final, we will {verb} {outcome} through a {adjective} recovery narrative."),
         ),
     },
     "excuse_communication": {
@@ -358,14 +235,8 @@ PATTERNS: dict[str, dict[int, tuple[str, ...]]] = {
             "A gap in the handover meant we had to {verb} the {adjective} {noun} late.",
         ),
         3: (
-            (
-                "A breakdown in stakeholder communication [ {expression}] meant the "
-                "{phrase} did not {verb} {outcome} in time."
-            ),
-            (
-                "The message architecture failed to {verb} {outcome}, so {stakeholder} "
-                "were not carrying the same {noun}."
-            ),
+            ("A breakdown in stakeholder communication [ {expression}] meant the {phrase} did not {verb} {outcome} in time."),
+            ("The message architecture failed to {verb} {outcome}, so {stakeholder} were not carrying the same {noun}."),
         ),
     },
     "strategy_objective": {
@@ -379,10 +250,7 @@ PATTERNS: dict[str, dict[int, tuple[str, ...]]] = {
         ),
         3: (
             "{verb} enterprise-facing {phrase} in pursuit of {outcome}.",
-            (
-                "Institutionalise a {adjective} {noun} that lets {stakeholder} {verb} "
-                "{outcome} [ {expression}]."
-            ),
+            ("Institutionalise a {adjective} {noun} that lets {stakeholder} {verb} {outcome} [ {expression}]."),
         ),
     },
     "strategy_rationale": {
@@ -391,10 +259,7 @@ PATTERNS: dict[str, dict[int, tuple[str, ...]]] = {
             "Without it, the {noun} stays harder than it needs to be.",
         ),
         2: (
-            (
-                "This enables {adjective} progress across the {noun} and gives "
-                "{stakeholder} a clearer path to {outcome}."
-            ),
+            ("This enables {adjective} progress across the {noun} and gives {stakeholder} a clearer path to {outcome}."),
             "It reduces friction in the {noun} so we can {verb} {outcome}.",
         ),
         3: (
@@ -417,10 +282,7 @@ PATTERNS: dict[str, dict[int, tuple[str, ...]]] = {
             "The mission of {company} is to {verb} a {adjective} {noun} so {outcome} follows.",
         ),
         3: (
-            (
-                "{company} exists to {verb} {outcome} by a promise to {verb} a {phrase} "
-                "[ {expression}] for {stakeholder}."
-            ),
+            ("{company} exists to {verb} {outcome} by a promise to {verb} a {phrase} [ {expression}] for {stakeholder}."),
             "The mission of {company} is to {verb} a {adjective} {noun} in service of {outcome}.",
         ),
     },
@@ -430,17 +292,11 @@ PATTERNS: dict[str, dict[int, tuple[str, ...]]] = {
             "{company} is somewhere {stakeholder} can {verb} {outcome}.",
         ),
         2: (
-            (
-                "We envision {company} as a place in which {stakeholder} {verb} {adjective} "
-                "{outcome} as a matter of course."
-            ),
+            ("We envision {company} as a place in which {stakeholder} {verb} {adjective} {outcome} as a matter of course."),
             "A future where the {noun} is so {adjective} that {outcome} feels inevitable.",
         ),
         3: (
-            (
-                "We envision {company} as a place in which {stakeholder} inhabit a {phrase} and "
-                "{verb} {outcome} [ {expression}]."
-            ),
+            ("We envision {company} as a place in which {stakeholder} inhabit a {phrase} and {verb} {outcome} [ {expression}]."),
             "A horizon where {adjective} {noun} and {outcome} are the same sentence.",
         ),
     },
@@ -454,10 +310,7 @@ PATTERNS: dict[str, dict[int, tuple[str, ...]]] = {
             "Stewardship of the {noun}: we {verb} it so {outcome} survives contact with a Tuesday.",
         ),
         3: (
-            (
-                "{adjective} {noun}: we {verb} {outcome} [ {expression}] even when "
-                "{stakeholder} have not asked twice."
-            ),
+            ("{adjective} {noun}: we {verb} {outcome} [ {expression}] even when {stakeholder} have not asked twice."),
             "Radical {noun}: a commitment to {verb} {outcome} through the {phrase}.",
         ),
     },
@@ -471,14 +324,8 @@ PATTERNS: dict[str, dict[int, tuple[str, ...]]] = {
             "Our purpose is to {verb} the {noun} until {outcome} is boringly reliable.",
         ),
         3: (
-            (
-                "The purpose of {company} is to {verb} a {phrase} that can {verb} {outcome} "
-                "for {stakeholder} [ {expression}]."
-            ),
-            (
-                "{company} pursues {outcome} by a decision to {verb} the {adjective} {noun} "
-                "into something {stakeholder} can almost explain."
-            ),
+            ("The purpose of {company} is to {verb} a {phrase} that can {verb} {outcome} for {stakeholder} [ {expression}]."),
+            ("{company} pursues {outcome} by a decision to {verb} the {adjective} {noun} into something {stakeholder} can almost explain."),
         ),
     },
     "email_subject_update": {
@@ -523,16 +370,10 @@ PATTERNS: dict[str, dict[int, tuple[str, ...]]] = {
         ),
         2: (
             "We continue to {verb} the {adjective} {noun} so {stakeholder} can {verb} {outcome}.",
-            (
-                "Progress on the {noun} is steady [ {expression}]. We will {verb} the "
-                "next step with {stakeholder}."
-            ),
+            ("Progress on the {noun} is steady [ {expression}]. We will {verb} the next step with {stakeholder}."),
         ),
         3: (
-            (
-                "We continue to {verb} our {phrase} [ {expression}] in order to {verb} {outcome} "
-                "for {stakeholder}."
-            ),
+            ("We continue to {verb} our {phrase} [ {expression}] in order to {verb} {outcome} for {stakeholder}."),
             "The {adjective} {noun} continues to {verb} {outcome} [ through {management}].",
         ),
     },
@@ -546,14 +387,8 @@ PATTERNS: dict[str, dict[int, tuple[str, ...]]] = {
             "A nudge on the {noun}: once we {verb} it, we can move toward {outcome}.",
         ),
         3: (
-            (
-                "Circling back, with intent, so we can {verb} the {phrase} and {verb} "
-                "{outcome} [ {expression}]."
-            ),
-            (
-                "This is the follow-up that pretends not to be a chase: please {verb} "
-                "the {adjective} {noun} for {stakeholder}."
-            ),
+            ("Circling back, with intent, so we can {verb} the {phrase} and {verb} {outcome} [ {expression}]."),
+            ("This is the follow-up that pretends not to be a chase: please {verb} the {adjective} {noun} for {stakeholder}."),
         ),
     },
     "email_body_apology": {
@@ -562,21 +397,12 @@ PATTERNS: dict[str, dict[int, tuple[str, ...]]] = {
             "Apologies for the confusion on the {noun}. I will {verb} a clearer version.",
         ),
         2: (
-            (
-                "Apologies that the {adjective} {noun} did not land as planned. We will "
-                "{verb} {outcome} with {stakeholder}."
-            ),
+            ("Apologies that the {adjective} {noun} did not land as planned. We will {verb} {outcome} with {stakeholder}."),
             "I am sorry for the delay. The next version of the {noun} will {verb} the open points.",
         ),
         3: (
-            (
-                "Please accept an apology for the friction on the {phrase}. We are "
-                "a plan to {verb} {outcome} [ {expression}] so {stakeholder} are not left guessing."
-            ),
-            (
-                "The {adjective} {noun} should have been clearer. We will {verb} it "
-                "and {verb} the lesson into {management}."
-            ),
+            ("Please accept an apology for the friction on the {phrase}. We are a plan to {verb} {outcome} [ {expression}] so {stakeholder} are not left guessing."),
+            ("The {adjective} {noun} should have been clearer. We will {verb} it and {verb} the lesson into {management}."),
         ),
     },
     "email_body_announcement": {
@@ -589,14 +415,8 @@ PATTERNS: dict[str, dict[int, tuple[str, ...]]] = {
             "{stakeholder} should know that we will {verb} the {noun} [ {expression}].",
         ),
         3: (
-            (
-                "{company} will {verb} the {phrase} [ {expression}] in order to {verb} "
-                "{outcome} for {stakeholder}."
-            ),
-            (
-                "Please cascade this: the {adjective} {noun} is now the path by which "
-                "we {verb} {outcome}."
-            ),
+            ("{company} will {verb} the {phrase} [ {expression}] in order to {verb} {outcome} for {stakeholder}."),
+            ("Please cascade this: the {adjective} {noun} is now the path by which we {verb} {outcome}."),
         ),
     },
     "email_body_request": {
@@ -609,14 +429,8 @@ PATTERNS: dict[str, dict[int, tuple[str, ...]]] = {
             "I need a {adjective} view of the {noun} so we can {verb} {outcome}.",
         ),
         3: (
-            (
-                "Please {verb} the {phrase} [ {expression}] and return a view that helps "
-                "us {verb} {outcome}."
-            ),
-            (
-                "Requesting that {stakeholder} {verb} the {adjective} {noun} before the "
-                "next forum attempts to {verb} {outcome}."
-            ),
+            ("Please {verb} the {phrase} [ {expression}] and return a view that helps us {verb} {outcome}."),
+            ("Requesting that {stakeholder} {verb} the {adjective} {noun} before the next forum attempts to {verb} {outcome}."),
         ),
     },
     "email_body_escalation": {
@@ -625,21 +439,12 @@ PATTERNS: dict[str, dict[int, tuple[str, ...]]] = {
             "The {noun} needs a decision from {stakeholder} before we can continue.",
         ),
         2: (
-            (
-                "I am escalating the {adjective} {noun} because we cannot {verb} {outcome} "
-                "without a decision."
-            ),
+            ("I am escalating the {adjective} {noun} because we cannot {verb} {outcome} without a decision."),
             "The {noun} is blocked. {stakeholder} need to {verb} it so the team can move.",
         ),
         3: (
-            (
-                "Escalating the {phrase} [ {expression}]: without a decision we cannot "
-                "{verb} {outcome} for {stakeholder}."
-            ),
-            (
-                "The {adjective} {noun} has exhausted the local options. We need "
-                "{stakeholder} to {verb} it."
-            ),
+            ("Escalating the {phrase} [ {expression}]: without a decision we cannot {verb} {outcome} for {stakeholder}."),
+            ("The {adjective} {noun} has exhausted the local options. We need {stakeholder} to {verb} it."),
         ),
     },
     "email_body_reminder": {
@@ -652,43 +457,22 @@ PATTERNS: dict[str, dict[int, tuple[str, ...]]] = {
             "The {noun} is still outstanding [ {expression}]. Please {verb} it.",
         ),
         3: (
-            (
-                "A strategically gentle reminder to {verb} the {phrase} before "
-                "{stakeholder} {verb} {outcome} without us."
-            ),
-            (
-                "The {adjective} {noun} remains unresolved [ {expression}]. "
-                "{stakeholder} are waiting to {verb} it."
-            ),
+            ("A strategically gentle reminder to {verb} the {phrase} before {stakeholder} {verb} {outcome} without us."),
+            ("The {adjective} {noun} remains unresolved [ {expression}]. {stakeholder} are waiting to {verb} it."),
         ),
     },
     "document": {
         1: (
-            (
-                "The {noun} is in good enough shape to {verb}, provided {stakeholder} "
-                "{verb} {outcome}."
-            ),
+            ("The {noun} is in good enough shape to {verb}, provided {stakeholder} {verb} {outcome}."),
             "We recommend a {adjective} pass over the {noun} before the next step.",
         ),
         2: (
-            (
-                "The {adjective} {noun} gives {stakeholder} a practical way to {verb} "
-                "{outcome} [ {expression}]."
-            ),
-            (
-                "Progress depends on our ability to {verb} the {noun} without adding "
-                "another layer of {management}."
-            ),
+            ("The {adjective} {noun} gives {stakeholder} a practical way to {verb} {outcome} [ {expression}]."),
+            ("Progress depends on our ability to {verb} the {noun} without adding another layer of {management}."),
         ),
         3: (
-            (
-                "The {phrase} [ {expression}] positions {stakeholder} to {verb} {outcome} "
-                "while we still {verb} the {noun}."
-            ),
-            (
-                "In keeping with {cliche}, the {adjective} {noun} will {verb} {outcome} "
-                "through {management}."
-            ),
+            ("The {phrase} [ {expression}] positions {stakeholder} to {verb} {outcome} while we still {verb} the {noun}."),
+            ("In keeping with {cliche}, the {adjective} {noun} will {verb} {outcome} through {management}."),
         ),
     },
     "initiative": {
@@ -722,11 +506,6 @@ PATTERNS: dict[str, dict[int, tuple[str, ...]]] = {
     "outcome_item": {
         1: ("{stakeholder} can {verb} {outcome}.",),
         2: ("{stakeholder} {verb} {outcome} through the {adjective} {noun}.",),
-        3: (
-            (
-                "{stakeholder} experience {outcome} [ {expression}] because the "
-                "{phrase} is ready for us to {verb}."
-            ),
-        ),
+        3: (("{stakeholder} experience {outcome} [ {expression}] because the {phrase} is ready for us to {verb}."),),
     },
 }

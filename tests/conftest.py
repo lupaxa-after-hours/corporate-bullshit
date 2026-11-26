@@ -6,9 +6,7 @@ import pytest
 
 
 @pytest.fixture(autouse=True)
-def _isolated_config(
-    monkeypatch: pytest.MonkeyPatch, tmp_path_factory: pytest.TempPathFactory
-) -> None:
+def _isolated_config(monkeypatch: pytest.MonkeyPatch, tmp_path_factory: pytest.TempPathFactory) -> None:
     root = tmp_path_factory.mktemp("config-home")
     monkeypatch.chdir(root)
     monkeypatch.setenv("XDG_CONFIG_HOME", str(root / "xdg"))

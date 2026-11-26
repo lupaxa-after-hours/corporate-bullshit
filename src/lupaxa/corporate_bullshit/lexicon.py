@@ -553,10 +553,7 @@ BINGO_TERMS: tuple[str, ...] = (
 JARGON: tuple[tuple[str, str], ...] = (
     (
         "Synergy",
-        (
-            "The mysterious force that supposedly makes two inefficient departments "
-            "collectively more productive."
-        ),
+        ("The mysterious force that supposedly makes two inefficient departments collectively more productive."),
     ),
     (
         "Bandwidth",
@@ -739,10 +736,7 @@ PHRASES: tuple[tuple[int, str, str], ...] = (
     (
         3,
         "we need to finish this today",
-        (
-            "we must strategically accelerate the completion of this deliverable "
-            "within the current operational timeframe"
-        ),
+        ("we must strategically accelerate the completion of this deliverable within the current operational timeframe"),
     ),
     (1, "the project is late", "the project is behind schedule"),
     (

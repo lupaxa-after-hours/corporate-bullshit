@@ -158,20 +158,14 @@ def _document_markdown(item: JsonObject) -> str:
     parts = [f"# {item['title']}"]
     for section in _objects(item["sections"]):
         content = _strings(section["content"])
-        body = (
-            "\n".join(f"- {line}" for line in content)
-            if section["style"] == "items"
-            else "\n\n".join(content)
-        )
+        body = "\n".join(f"- {line}" for line in content) if section["style"] == "items" else "\n\n".join(content)
         parts.append(f"## {section['heading']}\n\n{body}")
     return "\n\n".join(parts)
 
 
 def _card_text(card: list[list[str]]) -> str:
     wrapped = [[_wrap(cell, 18) for cell in row] for row in card]
-    widths = [
-        max(len(line) for row in wrapped for line in row[column]) for column in range(len(card))
-    ]
+    widths = [max(len(line) for row in wrapped for line in row[column]) for column in range(len(card))]
     border = "+" + "+".join("-" * (width + 2) for width in widths) + "+"
     lines = [border]
     for row in wrapped:

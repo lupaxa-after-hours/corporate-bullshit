@@ -29,13 +29,7 @@ def _catalogue(catalogue: Catalogue | None) -> Catalogue:
     return catalogue if catalogue is not None else load_builtin()
 
 
-def _engine(
-    *,
-    level: int,
-    seed: int | None,
-    catalogue: Catalogue | None,
-    company: str = "",
-) -> Engine:
+def _engine(*, level: int, seed: int | None, catalogue: Catalogue | None, company: str = "") -> Engine:
     return Engine(_catalogue(catalogue), Random(seed), level, company)
 
 
@@ -65,26 +59,13 @@ def _unique_lines(engine: Engine, group_for_index: Callable[[], str], count: int
     return results
 
 
-def generate(
-    *,
-    level: int = 2,
-    count: int = 1,
-    seed: int | None = None,
-    catalogue: Catalogue | None = None,
-) -> list[str]:
+def generate(*, level: int = 2, count: int = 1, seed: int | None = None, catalogue: Catalogue | None = None) -> list[str]:
     """Return corporate statements."""
     engine = _engine(level=level, seed=seed, catalogue=catalogue)
     return engine.render_unique("statement", count)
 
 
-def meeting(
-    *,
-    kind: str = "random",
-    level: int = 2,
-    count: int = 1,
-    seed: int | None = None,
-    catalogue: Catalogue | None = None,
-) -> list[str]:
+def meeting(*, kind: str = "random", level: int = 2, count: int = 1, seed: int | None = None, catalogue: Catalogue | None = None) -> list[str]:
     """Return meeting contributions."""
     engine = _engine(level=level, seed=seed, catalogue=catalogue)
 
@@ -94,14 +75,7 @@ def meeting(
     return _unique_lines(engine, group, count)
 
 
-def excuse(
-    *,
-    topic: str = "random",
-    level: int = 2,
-    count: int = 1,
-    seed: int | None = None,
-    catalogue: Catalogue | None = None,
-) -> list[str]:
+def excuse(*, topic: str = "random", level: int = 2, count: int = 1, seed: int | None = None, catalogue: Catalogue | None = None) -> list[str]:
     """Return professional-sounding excuses."""
     engine = _engine(level=level, seed=seed, catalogue=catalogue)
 
@@ -111,14 +85,7 @@ def excuse(
     return _unique_lines(engine, group, count)
 
 
-def strategy(
-    *,
-    level: int = 2,
-    count: int = 1,
-    seed: int | None = None,
-    include_kpi: bool = True,
-    catalogue: Catalogue | None = None,
-) -> list[JsonObject]:
+def strategy(*, level: int = 2, count: int = 1, seed: int | None = None, include_kpi: bool = True, catalogue: Catalogue | None = None) -> list[JsonObject]:
     """Return objectives, rationales, and optional fictional KPIs."""
     engine = _engine(level=level, seed=seed, catalogue=catalogue)
     results: list[JsonObject] = []
@@ -134,15 +101,7 @@ def strategy(
     return results
 
 
-def mission(
-    *,
-    kind: str = "mission",
-    company: str = "",
-    level: int = 2,
-    count: int = 1,
-    seed: int | None = None,
-    catalogue: Catalogue | None = None,
-) -> list[str]:
+def mission(*, kind: str = "mission", company: str = "", level: int = 2, count: int = 1, seed: int | None = None, catalogue: Catalogue | None = None) -> list[str]:
     """Return mission, vision, values, or purpose statements."""
     engine = _engine(level=level, seed=seed, catalogue=catalogue, company=company)
 
@@ -199,12 +158,7 @@ def jargon_list(catalogue: Catalogue | None = None) -> list[str]:
     return [entry.term for entry in sorted(entries, key=lambda item: item.term.casefold())]
 
 
-def jargon_random(
-    *,
-    count: int = 1,
-    seed: int | None = None,
-    catalogue: Catalogue | None = None,
-) -> list[JargonEntry]:
+def jargon_random(*, count: int = 1, seed: int | None = None, catalogue: Catalogue | None = None) -> list[JargonEntry]:
     """Return random jargon entries, without duplicates when the list allows it."""
     entries = list(_catalogue(catalogue).jargon)
     if not entries:
@@ -218,22 +172,12 @@ def jargon_random(
     return picked
 
 
-def translate(
-    text: str,
-    *,
-    level: int = 2,
-) -> str:
+def translate(text: str, *, level: int = 2) -> str:
     """Translate ordinary English into corporate English."""
     return translate_text(text, level)
 
 
-def bingo(
-    *,
-    size: int = 5,
-    count: int = 1,
-    seed: int | None = None,
-    catalogue: Catalogue | None = None,
-) -> list[list[list[str]]]:
+def bingo(*, size: int = 5, count: int = 1, seed: int | None = None, catalogue: Catalogue | None = None) -> list[list[list[str]]]:
     """Return bingo cards. The centre cell is ``FREE SPACE``."""
     if size not in BINGO_SIZES:
         raise UsageError("bingo size must be 3, 5, or 7")
@@ -241,9 +185,7 @@ def bingo(
     needed = size * size - 1
     terms = list(dict.fromkeys(source.bingo))
     if len(terms) < needed:
-        raise VocabularyError(
-            f"need {needed} unique bingo terms for a {size}×{size} card, found {len(terms)}"
-        )
+        raise VocabularyError(f"need {needed} unique bingo terms for a {size}×{size} card, found {len(terms)}")
     rng = Random(seed)
     cards: list[list[list[str]]] = []
     seen: set[tuple[tuple[str, ...], ...]] = set()
@@ -278,16 +220,7 @@ def _card(rng: Random, terms: list[str], size: int) -> list[list[str]]:
     return card
 
 
-def document(
-    *,
-    kind: str = "strategy",
-    company: str = "",
-    paragraphs: int = 3,
-    level: int = 2,
-    count: int = 1,
-    seed: int | None = None,
-    catalogue: Catalogue | None = None,
-) -> list[JsonObject]:
+def document(*, kind: str = "strategy", company: str = "", paragraphs: int = 3, level: int = 2, count: int = 1, seed: int | None = None, catalogue: Catalogue | None = None) -> list[JsonObject]:
     """Return fictional corporate documents."""
     engine = _engine(level=level, seed=seed, catalogue=catalogue, company=company)
     documents: list[JsonObject] = []

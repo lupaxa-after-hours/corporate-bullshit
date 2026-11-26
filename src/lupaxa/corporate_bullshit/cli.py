@@ -59,13 +59,8 @@ def main(argv: list[str] | None = None) -> int:
 
 def build_parser() -> argparse.ArgumentParser:
     """Return the corporate-bullshit argument parser."""
-    parser = argparse.ArgumentParser(
-        prog="corporate-bullshit",
-        description="Generate convincingly meaningless corporate language.",
-    )
-    parser.add_argument(
-        "--version", action="version", version=f"corporate-bullshit {get_version()}"
-    )
+    parser = argparse.ArgumentParser(prog="corporate-bullshit", description="Generate convincingly meaningless corporate language.")
+    parser.add_argument("--version", action="version", version=f"corporate-bullshit {get_version()}")
     shared = argparse.ArgumentParser(add_help=False)
     shared.add_argument("--config", help="TOML configuration file.")
     shared.add_argument("--format", dest="output_format", help="text, json, or markdown.")
@@ -79,102 +74,49 @@ def build_parser() -> argparse.ArgumentParser:
 
     generated = argparse.ArgumentParser(add_help=False, parents=[shared])
     generated.add_argument("--level", type=_level, default=None, help="Bullshit intensity, 1 to 3.")
-    generated.add_argument(
-        "--count", type=_count, default=None, help=f"How many results, {MIN_COUNT} to {MAX_COUNT}."
-    )
+    generated.add_argument("--count", type=_count, default=None, help=f"How many results, {MIN_COUNT} to {MAX_COUNT}.")
 
     commands = parser.add_subparsers(dest="command", required=True)
 
     commands.add_parser("generate", parents=[generated], help="Generate corporate statements.")
 
-    meeting_parser = commands.add_parser(
-        "meeting", parents=[generated], help="Generate meeting contributions."
-    )
-    meeting_parser.add_argument(
-        "--type", dest="kind", default="random", help="Meeting contribution type."
-    )
+    meeting_parser = commands.add_parser("meeting", parents=[generated], help="Generate meeting contributions.")
+    meeting_parser.add_argument("--type", dest="kind", default="random", help="Meeting contribution type.")
 
-    excuse_parser = commands.add_parser(
-        "excuse", parents=[generated], help="Generate a corporate excuse."
-    )
+    excuse_parser = commands.add_parser("excuse", parents=[generated], help="Generate a corporate excuse.")
     excuse_parser.add_argument("--topic", default="random", help="What the excuse is about.")
 
-    strategy_parser = commands.add_parser(
-        "strategy", parents=[generated], help="Generate strategic objectives."
-    )
+    strategy_parser = commands.add_parser("strategy", parents=[generated], help="Generate strategic objectives.")
     strategy_parser.add_argument("--no-kpi", action="store_true", help="Omit the fictional KPI.")
 
-    mission_parser = commands.add_parser(
-        "mission", parents=[generated], help="Generate mission or vision text."
-    )
-    mission_parser.add_argument(
-        "--type",
-        dest="kind",
-        default="mission",
-        help="mission, vision, values, purpose, or random.",
-    )
-    mission_parser.add_argument(
-        "--company", default=None, help="Company name, inserted as literal text."
-    )
+    mission_parser = commands.add_parser("mission", parents=[generated], help="Generate mission or vision text.")
+    mission_parser.add_argument("--type", dest="kind", default="mission", help="mission, vision, values, purpose, or random.")
+    mission_parser.add_argument("--company", default=None, help="Company name, inserted as literal text.")
 
-    email_parser = commands.add_parser(
-        "email", parents=[generated], help="Generate a corporate email."
-    )
+    email_parser = commands.add_parser("email", parents=[generated], help="Generate a corporate email.")
     email_parser.add_argument("--type", dest="kind", default="update", help="Email type.")
-    email_parser.add_argument(
-        "--recipient", default="", help="Recipient name, inserted as literal text."
-    )
+    email_parser.add_argument("--recipient", default="", help="Recipient name, inserted as literal text.")
     email_parser.add_argument("--sender", default="", help="Sender name, inserted as literal text.")
-    email_parser.add_argument(
-        "--paragraphs", type=_paragraphs, default=None, help="Body paragraph count."
-    )
-    email_parser.add_argument(
-        "--company", default=None, help="Company name, inserted as literal text."
-    )
+    email_parser.add_argument("--paragraphs", type=_paragraphs, default=None, help="Body paragraph count.")
+    email_parser.add_argument("--company", default=None, help="Company name, inserted as literal text.")
 
-    jargon_parser = commands.add_parser(
-        "jargon", parents=[shared], help="Define or list corporate jargon."
-    )
-    jargon_parser.add_argument(
-        "--define", default=None, help="Look up a term. Matching ignores case."
-    )
+    jargon_parser = commands.add_parser("jargon", parents=[shared], help="Define or list corporate jargon.")
+    jargon_parser.add_argument("--define", default=None, help="Look up a term. Matching ignores case.")
     jargon_parser.add_argument("--list", action="store_true", help="List known terms.")
-    jargon_parser.add_argument(
-        "--count", type=_count, default=None, help="How many random terms to show."
-    )
+    jargon_parser.add_argument("--count", type=_count, default=None, help="How many random terms to show.")
 
-    translate_parser = commands.add_parser(
-        "translate",
-        parents=[shared],
-        help="Rewrite plain English as corporate English.",
-    )
-    translate_parser.add_argument(
-        "text", nargs="?", help="Text to translate. Reads stdin when omitted."
-    )
-    translate_parser.add_argument(
-        "--level", type=_level, default=None, help="Bullshit intensity, 1 to 3."
-    )
+    translate_parser = commands.add_parser("translate", parents=[shared], help="Rewrite plain English as corporate English.")
+    translate_parser.add_argument("text", nargs="?", help="Text to translate. Reads stdin when omitted.")
+    translate_parser.add_argument("--level", type=_level, default=None, help="Bullshit intensity, 1 to 3.")
 
-    bingo_parser = commands.add_parser(
-        "bingo", parents=[shared], help="Generate a buzzword bingo card."
-    )
-    bingo_parser.add_argument(
-        "--count", type=_count, default=None, help=f"How many cards, {MIN_COUNT} to {MAX_COUNT}."
-    )
-    bingo_parser.add_argument(
-        "--size", type=_bingo_size, default=5, help="Odd grid size: 3, 5, or 7."
-    )
+    bingo_parser = commands.add_parser("bingo", parents=[shared], help="Generate a buzzword bingo card.")
+    bingo_parser.add_argument("--count", type=_count, default=None, help=f"How many cards, {MIN_COUNT} to {MAX_COUNT}.")
+    bingo_parser.add_argument("--size", type=_bingo_size, default=5, help="Odd grid size: 3, 5, or 7.")
 
-    document_parser = commands.add_parser(
-        "document", parents=[generated], help="Generate a fictional document."
-    )
+    document_parser = commands.add_parser("document", parents=[generated], help="Generate a fictional document.")
     document_parser.add_argument("--type", dest="kind", default="strategy", help="Document type.")
-    document_parser.add_argument(
-        "--paragraphs", type=_paragraphs, default=None, help="Paragraph budget for the document."
-    )
-    document_parser.add_argument(
-        "--company", default=None, help="Company name, inserted as literal text."
-    )
+    document_parser.add_argument("--paragraphs", type=_paragraphs, default=None, help="Paragraph budget for the document.")
+    document_parser.add_argument("--company", default=None, help="Company name, inserted as literal text.")
     return parser
 
 
@@ -188,23 +130,14 @@ def _run(argv: list[str] | None) -> int:
     settings = load_settings(args.config)
     level = settings.level if getattr(args, "level", None) is None else args.level
     count = settings.count if getattr(args, "count", None) is None else args.count
-    paragraphs = (
-        settings.paragraphs if getattr(args, "paragraphs", None) is None else args.paragraphs
-    )
+    paragraphs = settings.paragraphs if getattr(args, "paragraphs", None) is None else args.paragraphs
     output_format = _resolve_format(args.output_format, settings)
     company = _resolve_company(args, settings)
     catalogue = load_catalogue([*settings.vocabulary, *settings.templates])
     if catalogue.warnings and not args.quiet:
         for warning in catalogue.warnings:
             print(f"warning: {warning}", file=sys.stderr)
-    payload = _dispatch(
-        args,
-        level=level,
-        count=count,
-        paragraphs=paragraphs,
-        company=company,
-        catalogue=catalogue,
-    )
+    payload = _dispatch(args, level=level, count=count, paragraphs=paragraphs, company=company, catalogue=catalogue)
     if args.verbose:
         bits = [
             f"command={args.command}",
@@ -223,15 +156,7 @@ def _run(argv: list[str] | None) -> int:
     return 0
 
 
-def _dispatch(
-    args: argparse.Namespace,
-    *,
-    level: int,
-    count: int,
-    paragraphs: int,
-    company: str,
-    catalogue: Catalogue,
-) -> dict[str, object]:
+def _dispatch(args: argparse.Namespace, *, level: int, count: int, paragraphs: int, company: str, catalogue: Catalogue) -> dict[str, object]:
     """Build the structured result for one command."""
     command = args.command
     seed = args.seed
@@ -252,29 +177,19 @@ def _dispatch(
         base["level"] = level
         base["type"] = args.kind
         base["count"] = count
-        base["results"] = meeting(
-            kind=args.kind, level=level, count=count, seed=seed, catalogue=catalogue
-        )
+        base["results"] = meeting(kind=args.kind, level=level, count=count, seed=seed, catalogue=catalogue)
         return base
     if command == "excuse":
         _known(args.topic, EXCUSE_TOPICS, "excuse topic")
         base["level"] = level
         base["topic"] = args.topic
         base["count"] = count
-        base["results"] = excuse(
-            topic=args.topic, level=level, count=count, seed=seed, catalogue=catalogue
-        )
+        base["results"] = excuse(topic=args.topic, level=level, count=count, seed=seed, catalogue=catalogue)
         return base
     if command == "strategy":
         base["level"] = level
         base["count"] = count
-        base["results"] = strategy(
-            level=level,
-            count=count,
-            seed=seed,
-            include_kpi=not args.no_kpi,
-            catalogue=catalogue,
-        )
+        base["results"] = strategy(level=level, count=count, seed=seed, include_kpi=not args.no_kpi, catalogue=catalogue)
         return base
     if command == "mission":
         _known(args.kind, MISSION_TYPES, "mission type")
@@ -283,14 +198,7 @@ def _dispatch(
         base["count"] = count
         if company:
             base["company"] = company
-        base["results"] = mission(
-            kind=args.kind,
-            company=company,
-            level=level,
-            count=count,
-            seed=seed,
-            catalogue=catalogue,
-        )
+        base["results"] = mission(kind=args.kind, company=company, level=level, count=count, seed=seed, catalogue=catalogue)
         return base
     if command == "email":
         _known(args.kind, EMAIL_TYPES, "email type")
@@ -300,17 +208,7 @@ def _dispatch(
         base["type"] = args.kind
         base["count"] = count
         base["paragraphs"] = paragraphs
-        base["results"] = email(
-            kind=args.kind,
-            recipient=recipient,
-            sender=sender,
-            paragraphs=paragraphs,
-            company=company,
-            level=level,
-            count=count,
-            seed=seed,
-            catalogue=catalogue,
-        )
+        base["results"] = email(kind=args.kind, recipient=recipient, sender=sender, paragraphs=paragraphs, company=company, level=level, count=count, seed=seed, catalogue=catalogue)
         return base
     if command == "jargon":
         return _jargon(args, base, count, catalogue)
@@ -333,25 +231,12 @@ def _dispatch(
         base["paragraphs"] = paragraphs
         if company:
             base["company"] = company
-        base["results"] = document(
-            kind=args.kind,
-            company=company,
-            paragraphs=paragraphs,
-            level=level,
-            count=count,
-            seed=seed,
-            catalogue=catalogue,
-        )
+        base["results"] = document(kind=args.kind, company=company, paragraphs=paragraphs, level=level, count=count, seed=seed, catalogue=catalogue)
         return base
     raise UsageError(f"unknown command: {command}")
 
 
-def _jargon(
-    args: argparse.Namespace,
-    base: dict[str, object],
-    count: int,
-    catalogue: Catalogue,
-) -> dict[str, object]:
+def _jargon(args: argparse.Namespace, base: dict[str, object], count: int, catalogue: Catalogue) -> dict[str, object]:
     if args.define and args.list:
         raise UsageError("--define and --list cannot be combined")
     if args.define is not None:

@@ -87,13 +87,7 @@ class Engine:
         if name == "percent":
             return str(self.rng.choice(PERCENTS))
         if name in self.catalogue.words:
-            word = self.catalogue.pick(
-                name,
-                self.level,
-                self.rng,
-                self._avoid,
-                self.preferred.get(name),
-            )
+            word = self.catalogue.pick(name, self.level, self.rng, self._avoid, self.preferred.get(name))
             self._avoid |= significant_tokens(word)
             return word
         if name in self.catalogue.patterns:

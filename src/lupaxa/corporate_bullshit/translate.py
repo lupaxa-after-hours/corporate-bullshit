@@ -30,11 +30,7 @@ def _apply(original: str, level: int) -> str:
         matched = False
         for _rule_level, source, replacement in phrases:
             end = index + len(source)
-            if (
-                end <= len(original)
-                and lower.startswith(source.casefold(), index)
-                and _boundary(original, index, end)
-            ):
+            if end <= len(original) and lower.startswith(source.casefold(), index) and _boundary(original, index, end):
                 pieces.append((replacement, False))
                 index = end
                 matched = True
