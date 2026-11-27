@@ -49,10 +49,7 @@ def _apply_words(pieces: list[tuple[str, bool]], level: int) -> str:
     if not rules:
         return "".join(part for part, _original in pieces)
     ordered = sorted(rules, key=len, reverse=True)
-    pattern = re.compile(
-        r"\b(" + "|".join(re.escape(word) for word in ordered) + r")\b",
-        re.IGNORECASE,
-    )
+    pattern = re.compile(r"\b(" + "|".join(re.escape(word) for word in ordered) + r")\b", re.IGNORECASE)
     chunks: list[str] = []
     buffer: list[str] = []
 

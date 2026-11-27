@@ -52,13 +52,7 @@ class Engine:
     def lock_terms(self) -> None:
         """Pick a small set of words and prefer them for the rest of this document."""
         preferred: dict[str, list[str]] = {}
-        for category, count in (
-            ("adjective", 2),
-            ("noun", 2),
-            ("verb", 2),
-            ("outcome", 1),
-            ("stakeholder", 1),
-        ):
+        for category, count in (("adjective", 2), ("noun", 2), ("verb", 2), ("outcome", 1), ("stakeholder", 1)):
             avoid: set[str] = set()
             chosen: list[str] = []
             for _ in range(count):

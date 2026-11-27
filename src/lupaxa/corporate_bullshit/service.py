@@ -9,16 +9,7 @@ from typing import TypeAlias
 from lupaxa.corporate_bullshit.catalogue import Catalogue, JargonEntry, load_builtin
 from lupaxa.corporate_bullshit.engine import Engine
 from lupaxa.corporate_bullshit.exceptions import UsageError, VocabularyError
-from lupaxa.corporate_bullshit.models import (
-    BINGO_SIZES,
-    DOCUMENT_SECTIONS,
-    DOCUMENT_TITLES,
-    DOCUMENT_TYPES,
-    EMAIL_TYPES,
-    EXCUSE_TOPICS,
-    MEETING_TYPES,
-    MISSION_TYPES,
-)
+from lupaxa.corporate_bullshit.models import BINGO_SIZES, DOCUMENT_SECTIONS, DOCUMENT_TITLES, DOCUMENT_TYPES, EMAIL_TYPES, EXCUSE_TOPICS, MEETING_TYPES, MISSION_TYPES
 from lupaxa.corporate_bullshit.translate import translate_text
 
 JsonObject: TypeAlias = dict[str, object]
@@ -112,16 +103,7 @@ def mission(*, kind: str = "mission", company: str = "", level: int = 2, count: 
 
 
 def email(
-    *,
-    kind: str = "update",
-    recipient: str = "",
-    sender: str = "",
-    paragraphs: int = 3,
-    company: str = "",
-    level: int = 2,
-    count: int = 1,
-    seed: int | None = None,
-    catalogue: Catalogue | None = None,
+    *, kind: str = "update", recipient: str = "", sender: str = "", paragraphs: int = 3, company: str = "", level: int = 2, count: int = 1, seed: int | None = None, catalogue: Catalogue | None = None
 ) -> list[JsonObject]:
     """Return fictional corporate emails."""
     engine = _engine(level=level, seed=seed, catalogue=catalogue, company=company)

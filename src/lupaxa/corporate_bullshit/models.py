@@ -13,47 +13,11 @@ MAX_PARAGRAPHS = 40
 BINGO_SIZES = (3, 5, 7)
 FORMATS = ("text", "json", "markdown")
 
-MEETING_TYPES = (
-    "agreement",
-    "avoidance",
-    "deflection",
-    "followup",
-    "strategy",
-    "objection",
-    "summary",
-    "random",
-)
-EXCUSE_TOPICS = (
-    "deadline",
-    "budget",
-    "technical",
-    "meeting",
-    "report",
-    "project",
-    "performance",
-    "communication",
-    "random",
-)
+MEETING_TYPES = ("agreement", "avoidance", "deflection", "followup", "strategy", "objection", "summary", "random")
+EXCUSE_TOPICS = ("deadline", "budget", "technical", "meeting", "report", "project", "performance", "communication", "random")
 MISSION_TYPES = ("mission", "vision", "values", "purpose", "random")
-EMAIL_TYPES = (
-    "update",
-    "followup",
-    "apology",
-    "announcement",
-    "request",
-    "escalation",
-    "reminder",
-    "random",
-)
-DOCUMENT_TYPES = (
-    "strategy",
-    "report",
-    "proposal",
-    "business-plan",
-    "executive-summary",
-    "transformation-plan",
-    "random",
-)
+EMAIL_TYPES = ("update", "followup", "apology", "announcement", "request", "escalation", "reminder", "random")
+DOCUMENT_TYPES = ("strategy", "report", "proposal", "business-plan", "executive-summary", "transformation-plan", "random")
 
 PERCENTS = (12, 17, 23, 27, 33, 37, 42, 48, 64, 73, 87, 110, 250)
 
@@ -97,11 +61,7 @@ DOCUMENT_SECTIONS: dict[str, tuple[tuple[str, str], ...]] = {
         ("Key Performance Indicators (Fictional)", "kpi"),
         ("Conclusion", "prose"),
     ),
-    "executive-summary": (
-        ("Executive Summary", "prose"),
-        ("Expected Outcomes", "outcome"),
-        ("Recommendations", "recommendation"),
-    ),
+    "executive-summary": (("Executive Summary", "prose"), ("Expected Outcomes", "outcome"), ("Recommendations", "recommendation")),
     "transformation-plan": (
         ("Executive Summary", "prose"),
         ("Background", "prose"),

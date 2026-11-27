@@ -8,15 +8,7 @@ from dataclasses import dataclass, field
 from pathlib import Path
 
 from lupaxa.corporate_bullshit.exceptions import UsageError
-from lupaxa.corporate_bullshit.models import (
-    FORMATS,
-    MAX_COUNT,
-    MAX_LEVEL,
-    MAX_PARAGRAPHS,
-    MIN_COUNT,
-    MIN_LEVEL,
-    MIN_PARAGRAPHS,
-)
+from lupaxa.corporate_bullshit.models import FORMATS, MAX_COUNT, MAX_LEVEL, MAX_PARAGRAPHS, MIN_COUNT, MIN_LEVEL, MIN_PARAGRAPHS
 
 _KEYS = {
     "level",

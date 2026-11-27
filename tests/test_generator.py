@@ -12,19 +12,7 @@ from lupaxa.corporate_bullshit.catalogue import load_builtin, load_catalogue, pa
 from lupaxa.corporate_bullshit.cli import main
 from lupaxa.corporate_bullshit.exceptions import TemplateError, UsageError, VocabularyError
 from lupaxa.corporate_bullshit.lexicon import WORDS
-from lupaxa.corporate_bullshit.service import (
-    bingo,
-    document,
-    email,
-    excuse,
-    generate,
-    jargon_define,
-    jargon_list,
-    meeting,
-    mission,
-    strategy,
-    translate,
-)
+from lupaxa.corporate_bullshit.service import bingo, document, email, excuse, generate, jargon_define, jargon_list, meeting, mission, strategy, translate
 
 REPEAT = re.compile(r"\b([A-Za-z][A-Za-z-]+)\s+\1\b", re.IGNORECASE)
 
@@ -73,27 +61,10 @@ def test_level_one_avoids_maximum_vocabulary() -> None:
 
 def test_meeting_and_excuse_categories() -> None:
     """Each meeting type and excuse topic produces a sentence."""
-    for kind in (
-        "agreement",
-        "avoidance",
-        "deflection",
-        "followup",
-        "strategy",
-        "objection",
-        "summary",
-    ):
+    for kind in ("agreement", "avoidance", "deflection", "followup", "strategy", "objection", "summary"):
         text = meeting(kind=kind, seed=8, level=2)[0]
         _assert_sentence(text)
-    for topic in (
-        "deadline",
-        "budget",
-        "technical",
-        "meeting",
-        "report",
-        "project",
-        "performance",
-        "communication",
-    ):
+    for topic in ("deadline", "budget", "technical", "meeting", "report", "project", "performance", "communication"):
         text = excuse(topic=topic, seed=8, level=2)[0]
         _assert_sentence(text)
 
